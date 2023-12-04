@@ -9,6 +9,7 @@ function CertificateItem({ certificate, handleCertificateDelete }) {
       <TableCell align="center">{certificate.name}</TableCell>
       <TableCell align="center">
         <IconButton
+          data-testid="delete-button"
           color="error"
           onClick={() => handleCertificateDelete(certificate.id)}
         >
