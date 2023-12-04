@@ -16,7 +16,7 @@ function App() {
           <Route
             path="/"
             element={
-              <CertificateList certificates={[{ id: 1, title: "cert" }]} />
+              <CertificateList />
             }
           />
           <Route path="/create" element={<CertificateForm />} />

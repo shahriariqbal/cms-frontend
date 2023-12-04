@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
   Table,
@@ -12,10 +13,20 @@ import {
 } from "@mui/material";
 import CertificateItem from "./certificateItem";
 import CertificateForm from "./certificateForm";
+import { fetchCertificates } from "../redux/actions/certificateActions";
 
-function CertificateList({ certificates, onDelete }) {
+function CertificateList({ onDelete }) {
+  const dispatch = useDispatch();
+
+  const certificates = useSelector((state) => state.certificates.entities);
+  const loading = useSelector((state) => state.certificates.loading);
+
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  useEffect(() => {
+    dispatch(fetchCertificates());
+  }, []);
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
