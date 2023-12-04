@@ -3,6 +3,7 @@ import axiosInstance from "../../utils/axios";
 import {
   FETCH_CERTIFICATES,
   DELETE_CERTIFICATE,
+  CREATE_CERTIFICATE,
 } from "../actionTypes/certificateTypes";
 
 //get certificates
@@ -21,5 +22,15 @@ export const deleteCertificate = createAsyncThunk(
   async (id) => {
     const response = await axiosInstance.delete(`/certificates/${id}`);
     return response;
+  }
+);
+
+//create certificate
+export const createCertificate = createAsyncThunk(
+  CREATE_CERTIFICATE,
+  async (data) => {
+    const response = await axiosInstance.post("/certificates", data);
+    console.log(response.data);
+    return response.data;
   }
 );

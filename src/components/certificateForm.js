@@ -1,10 +1,17 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { TextField, Button, Grid } from "@mui/material";
+import Swal from "sweetalert2";
+import { createCertificate } from "../redux/actions/certificateActions";
 
 function CertificateForm() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [certificateData, setCertificateData] = useState({
     name: "",
-    description: "",
+    data: "",
   });
 
   const handleChange = (event) => {
@@ -18,8 +25,14 @@ function CertificateForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(certificateData);
+    dispatch(createCertificate(certificateData));
+    Swal.fire("Success!", "Your certificate has been created.", "success").then(
+      () => {
+        navigate("/");
+      }
+    );
   };
-
+  console.log(certificateData);
   return (
     <form onSubmit={handleSubmit}>
       <Grid container spacing={2}>
@@ -36,7 +49,7 @@ function CertificateForm() {
         </Grid>
         <Grid item xs={12}>
           <TextField
-            name="description"
+            name="data"
             label="Description"
             variant="outlined"
             fullWidth

@@ -55,7 +55,11 @@ function CertificateList() {
         dispatch(deleteCertificate(id)).then((res) => {
           if (!res.hasOwnProperty("error")) {
             dispatch(fetchCertificates());
-            Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            Swal.fire(
+              "Deleted!",
+              "Your certificate has been deleted.",
+              "success"
+            );
           }
         });
       }
