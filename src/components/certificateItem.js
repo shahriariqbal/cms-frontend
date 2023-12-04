@@ -1,18 +1,18 @@
-import React from 'react';
-import { Card, CardContent, Typography, IconButton } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import React from "react";
+import { TableRow, TableCell, IconButton } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 function CertificateItem({ certificate, onDelete }) {
   return (
-    <Card>
-      <CardContent>
-        <Typography variant="h5">{certificate.title}</Typography>
+    <TableRow>
+      <TableCell>{certificate.id}</TableCell>
+      <TableCell>{certificate.name}</TableCell>
+      <TableCell>
         <IconButton onClick={() => onDelete(certificate.id)}>
           <DeleteIcon />
         </IconButton>
-      </CardContent>
-    </Card>
+      </TableCell>
+    </TableRow>
   );
 }
-
-export default CertificateItem
+export default CertificateItem;
