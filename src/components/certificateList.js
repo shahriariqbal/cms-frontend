@@ -12,6 +12,7 @@ import {
   TablePagination,
   Button,
   Box,
+  Typography,
 } from "@mui/material";
 import CertificateItem from "./certificateItem";
 import {
@@ -67,8 +68,11 @@ function CertificateList() {
   };
 
   return (
-    <>
-      <Box display="flex" justifyContent="flex-end">
+    <Box mx={4} pt={4}>
+      <Box display="flex" justifyContent="space-between" mb={3}>
+        <Typography variant="h6" fontWeight="bold">
+          Certificate List
+        </Typography>
         <Button
           size="small"
           posi
@@ -80,37 +84,56 @@ function CertificateList() {
           Add Certificate
         </Button>
       </Box>
-
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell align="right">Id</TableCell>
-            <TableCell align="right">Name</TableCell>
-            <TableCell align="right">Action</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {certificates
-            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-            .map((certificate) => (
-              <CertificateItem
-                key={certificate.id}
-                certificate={certificate}
-                handleCertificateDelete={handleCertificateDelete}
-              />
-            ))}
-        </TableBody>
-      </Table>
-      <TablePagination
-        rowsPerPageOptions={[5, 10, 25]}
-        component="div"
-        count={certificates.length}
-        rowsPerPage={rowsPerPage}
-        page={page}
-        onPageChange={handleChangePage}
-        onRowsPerPageChange={handleChangeRowsPerPage}
-      />
-    </>
+      {certificates.length > 0 ? (
+        <>
+          <Table size="small">
+            <TableHead>
+              <TableRow>
+                <TableCell align="center">
+                  <Typography variant="body1" fontWeight="bold">
+                    Id
+                  </Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="body1" fontWeight="bold">
+                    Name
+                  </Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="body1" fontWeight="bold">
+                    Action
+                  </Typography>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {certificates
+                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                .map((certificate) => (
+                  <CertificateItem
+                    key={certificate.id}
+                    certificate={certificate}
+                    handleCertificateDelete={handleCertificateDelete}
+                  />
+                ))}
+            </TableBody>
+          </Table>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 25]}
+            component="div"
+            count={certificates.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </>
+      ) : (
+        <Typography variant="body1" m={3} textAlign="center">
+          No certificate is available, please add a certificate.
+        </Typography>
+      )}
+    </Box>
   );
 }
 

@@ -8,7 +8,7 @@ import { Typography } from "@mui/material";
 function App() {
   return (
     <Grid m={5} p={5}>
-      <Typography variant="h4" mb={3}>
+      <Typography variant="h4" mb={5} align="center" fontWeight="bold">
         Certificate Management System
       </Typography>
       <Router>
