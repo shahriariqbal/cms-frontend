@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-
 import {
   Table,
   TableBody,
@@ -22,10 +21,6 @@ import {
 
 function CertificateList() {
   const dispatch = useDispatch();
-
-  const certificates = useSelector((state) => state.certificates.entities);
-  const loading = useSelector((state) => state.certificates.loading);
-
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -33,15 +28,16 @@ function CertificateList() {
     dispatch(fetchCertificates());
   }, []);
 
+  const certificates = useSelector((state) => state.certificates.entities);
+  // const loading = useSelector((state) => state.certificates.loading);
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
-
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
     setPage(0);
   };
-
   const handleCertificateDelete = (id) => {
     Swal.fire({
       title: "Confirmation",

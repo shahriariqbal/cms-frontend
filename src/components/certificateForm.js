@@ -10,11 +10,13 @@ function CertificateForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // State to manage form input values
   const [certificateData, setCertificateData] = useState({
     name: "",
     data: "",
   });
 
+  // Function to handle changes in form inputs
   const handleChange = (event) => {
     const { name, value } = event.target;
     setCertificateData((prevData) => ({
@@ -23,9 +25,10 @@ function CertificateForm() {
     }));
   };
 
+  // Function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(certificateData);
+    // Dispatch action to create a certificate
     dispatch(createCertificate(certificateData));
     Swal.fire("Success!", "Your certificate has been created.", "success").then(
       () => {

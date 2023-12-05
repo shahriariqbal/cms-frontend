@@ -1,9 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Grid } from "@mui/material";
-import "./App.css";
+import { Grid, Typography } from "@mui/material";
 import CertificateForm from "./components/certificateForm";
 import CertificateList from "./components/certificateList";
-import { Typography } from "@mui/material";
 
 function App() {
   return (
@@ -13,12 +11,7 @@ function App() {
       </Typography>
       <Router>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <CertificateList />
-            }
-          />
+          <Route path="/" element={<CertificateList />} />
           <Route path="/create" element={<CertificateForm />} />
         </Routes>
       </Router>

@@ -11,7 +11,6 @@ export const fetchCertificates = createAsyncThunk(
   FETCH_CERTIFICATES,
   async () => {
     const response = await axiosInstance.get("/certificates");
-    console.log(response.data);
     return response.data;
   }
 );
@@ -30,7 +29,6 @@ export const createCertificate = createAsyncThunk(
   CREATE_CERTIFICATE,
   async (data) => {
     const response = await axiosInstance.post("/certificates", data);
-    console.log(response.data);
     return response.data;
   }
 );
