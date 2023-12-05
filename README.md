@@ -19,6 +19,8 @@ npm install
 
 3. **Configure the API server URL**:
 
+For backend setup follow `https://github.com/shahriariqbal/cms-backend`
+
 Open the `config.js` file and set the `apiServerUrl` variable to the URL of the backend server:
 
 ```javascript
@@ -33,9 +35,9 @@ export const config = {
 npm start
 ```
 
-The application will start and can be accessed at `http://localhost:3000`.
-
 ## Testing
+
+To run the tests, use the command
 
 ```bash
 npm test
