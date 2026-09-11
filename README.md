@@ -58,3 +58,17 @@ Here are some screenshots of the application:
 - **Add New Certificate**:
 
 ![Add New Certificate] -->
+
+## Prerequisites
+
+- Node.js and npm
+
+## Available Scripts
+
+- `npm start` — run the app in development mode
+- `npm run build` — create a production build
+- `npm test` — run the test suite
+
+## Related Repositories
+
+- Backend API: [cms-backend](https://github.com/shahriariqbal/cms-backend)
